@@ -39,6 +39,7 @@ flutter:
     - assets/banner/company.jpg
     - assets/banner/gu.jpg
     - assets/banner/work.jpg
+    - assets/products/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

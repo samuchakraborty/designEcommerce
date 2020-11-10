@@ -1,85 +1,73 @@
-import 'dart:async';
-import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
+import 'package:ecomerce_design/models/ProductItem.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
-Future<List<Photo>> fetchPhotos(http.Client client) async {
-  final response =
-      await client.get('https://jsonplaceholder.typicode.com/photos');
+class ProductPage extends StatelessWidget {
+  final ProductItem products;
 
-  // Use the compute function to run parsePhotos in a separate isolate.
-  return compute(parsePhotos, response.body);
-}
-
-// A function that converts a response body into a List<Photo>.
-List<Photo> parsePhotos(String responseBody) {
-  final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
-
-  return parsed.map<Photo>((json) => Photo.fromJson(json)).toList();
-}
-
-class Photo {
-  final int albumId;
-  final int id;
-  final String title;
-  final String url;
-  final String thumbnailUrl;
-
-  Photo({this.albumId, this.id, this.title, this.url, this.thumbnailUrl});
-
-  factory Photo.fromJson(Map<String, dynamic> json) {
-    return Photo(
-      albumId: json['albumId'] as int,
-      id: json['id'] as int,
-      title: json['title'] as String,
-      url: json['url'] as String,
-      thumbnailUrl: json['thumbnailUrl'] as String,
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  // MyHomePage({Key key, this.title}) : super(key: key);
+  ProductPage({this.products});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Product"),
-      ),
-      body: FutureBuilder<List<Photo>>(
-        future: fetchPhotos(http.Client()),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) print(snapshot.error);
-
-          return snapshot.hasData
-              ? PhotosList(photos: snapshot.data)
-              : Center(child: CircularProgressIndicator());
-        },
-      ),
-    );
-  }
-}
-
-class PhotosList extends StatelessWidget {
-  final List<Photo> photos;
-
-  PhotosList({Key key, this.photos}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: const BoxConstraints.expand(),
-      child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
+        centerTitle: true,
+        title: Text(
+          products.productName,
+          style: TextStyle(color: Colors.black),
         ),
-        itemCount: photos.length,
-        itemBuilder: (context, index) {
-          return Image.network(photos[index].thumbnailUrl);
-        },
+      ),
+      body: Container(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Hero(
+                tag: products.image,
+               child: AspectRatio(
+                                  aspectRatio: 1 / 1,
+                                  child: Image(
+                                    image: AssetImage(products.image),
+                                  ),
+                                ),
+                              ),
+                    Text(products.productName),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 10),
+                      child: Text(
+                        "${products.price}\$",
+                        style: TextStyle(
+                            fontSize: 17,
+                            color: Colors.amber,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 10),
+                      child: Row(
+                        children: [
+                          OutlinedButton.icon(
+                              onPressed: () {},
+                              icon: Icon(EvaIcons.shoppingCart),
+                              label: Text("Cart")),
+                          OutlinedButton.icon(
+                              onPressed: () {},
+                              icon: Icon(EvaIcons.creditCard),
+                              label: Text("Buy Now")),
+                        ],
+                      ),
+                    ),
+                 
+            
+              Text(products.productDescription),
+
+          
+            ],
+          
+          ),
+        ),
       ),
     );
   }

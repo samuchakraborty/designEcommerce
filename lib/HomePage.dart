@@ -1,14 +1,14 @@
 import 'dart:ui';
 
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecomerce_design/ProductPage.dart';
+import 'package:ecomerce_design/models/ProductItem.dart';
 
 import 'package:ecomerce_design/widgets/CategoryItem.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'ProductPage.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -23,6 +23,15 @@ class _HomePageState extends State<HomePage> {
     "assets/banner/company.jpg",
     "assets/banner/gu.jpg",
     "assets/banner/work.jpg",
+  ];
+
+  List<ProductItem> productItem = [
+    ProductItem("DSLR", " DSLR", 100, "assets/products/dslr.jpg"),
+    ProductItem("HandWash", "HandWash", 100, "assets/products/handwash.jpg"),
+    ProductItem("Headphone", "Headphone", 100, "assets/products/headphone.jpg"),
+    ProductItem("Iphone", "Iphone", 100, "assets/products/iphone.jpg"),
+    ProductItem("Laptop", "Laptop", 100, "assets/products/laptop.png"),
+    ProductItem("Watch", "Watch", 100, "assets/products/watch.jpg"),
   ];
 
   @override
@@ -67,143 +76,172 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: Container(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              //height: constrains.maxHeight,
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  verticalDirection: VerticalDirection.down,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "Category",
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
-                      ),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            verticalDirection: VerticalDirection.down,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Category",
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 60,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  children: <Widget>[
+                    CategoryItem(
+                      Colors.amber,
+                      40,
+                      EvaIcons.giftOutline,
+                      EdgeInsets.all(10),
+                      EdgeInsets.only(left: 10),
                     ),
-                    SizedBox(
-                      height: 30,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        children: <Widget>[
-                          CategoryItem(
-                            Colors.amber,
-                            10,
-                            EvaIcons.giftOutline,
-                            EdgeInsets.all(10),
-                            EdgeInsets.only(left: 10),
-                          ),
-                          CategoryItem(
-                            Colors.cyan,
-                            10,
-                            EvaIcons.people,
-                            EdgeInsets.all(10),
-                            EdgeInsets.only(left: 10),
-                          ),
-                          CategoryItem(
-                            Colors.indigo,
-                            10,
-                            EvaIcons.gift,
-                            EdgeInsets.all(10),
-                            EdgeInsets.only(left: 10),
-                          ),
-                          CategoryItem(
-                            Colors.cyan,
-                            10,
-                            EvaIcons.battery,
-                            EdgeInsets.all(10),
-                            EdgeInsets.only(left: 10),
-                          ),
-                          CategoryItem(
-                            Colors.purple,
-                            10,
-                            EvaIcons.battery,
-                            EdgeInsets.all(10),
-                            EdgeInsets.only(left: 10),
-                          ),
-                          CategoryItem(
-                            Colors.brown,
-                            10,
-                            EvaIcons.globe,
-                            EdgeInsets.all(10),
-                            EdgeInsets.only(left: 10),
-                          ),
-                        ],
-                      ),
+                    CategoryItem(
+                      Colors.cyan,
+                      40,
+                      EvaIcons.people,
+                      EdgeInsets.all(10),
+                      EdgeInsets.only(left: 10),
                     ),
-
-                    SizedBox(
-                      height: 10,
+                    CategoryItem(
+                      Colors.indigo,
+                      40,
+                      EvaIcons.gift,
+                      EdgeInsets.all(10),
+                      EdgeInsets.only(left: 10),
                     ),
-                    //banner add slider
-                    CarouselSlider(
-                      options: CarouselOptions(
-                        aspectRatio: 16 / 9,
-                        autoPlay: true,
-                      ),
-                      items: bannerSlider.map((i) {
-                        return Builder(
-                          builder: (BuildContext context) {
-                            return Container(
-                              width: MediaQuery.of(context).size.width,
-                              margin: EdgeInsets.symmetric(horizontal: 10.0),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(16),
-                                child: Image(
-                                  image: AssetImage(i),
-                                  fit: BoxFit.cover,
-                                  alignment: Alignment.topCenter,
-                                ),
-                              ),
-                            );
-                          },
-                        );
-                      }).toList(),
+                    CategoryItem(
+                      Colors.cyan,
+                      40,
+                      EvaIcons.battery,
+                      EdgeInsets.all(10),
+                      EdgeInsets.only(left: 10),
                     ),
-                    //banner add slider
-
-                    SizedBox(
-                      height: 30,
+                    CategoryItem(
+                      Colors.purple,
+                      40,
+                      EvaIcons.battery,
+                      EdgeInsets.all(10),
+                      EdgeInsets.only(left: 10),
                     ),
-
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "Products",
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
+                    CategoryItem(
+                      Colors.brown,
+                      40,
+                      EvaIcons.globe,
+                      EdgeInsets.all(10),
+                      EdgeInsets.only(left: 10),
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
-
-                    new Checkbox(
-                        value: false,
-                        onChanged: (bool newValue) {
-                          Navigator.push(
-                            context,
-                            new MaterialPageRoute(
-                                builder: (context) => new MyHomePage()),
-                          );
-                        }),
                   ],
                 ),
               ),
-            ),
 
-            /* SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: MyHomePage(),
-            ),*/
-          ],
+              SizedBox(
+                height: 10,
+              ),
+              //banner add slider
+              CarouselSlider(
+                options: CarouselOptions(
+                  aspectRatio: 16 / 9,
+                  autoPlay: true,
+                ),
+                items: bannerSlider.map((i) {
+                  return Builder(
+                    builder: (BuildContext context) {
+                      return Container(
+                        width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.symmetric(horizontal: 10.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image(
+                            image: AssetImage(i),
+                            fit: BoxFit.cover,
+                            alignment: Alignment.topCenter,
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                }).toList(),
+              ),
+              //banner add slider
+
+              SizedBox(
+                height: 30,
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Products",
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              GridView.count(
+                physics: ClampingScrollPhysics(),
+                crossAxisCount: 2,
+                shrinkWrap: true,
+                childAspectRatio: 1 / 1.3,
+                children: productItem.map(
+                  (products) {
+                    return Stack(
+                      children: [
+                        Container(
+                          child: Column(
+                            children: [
+                              Hero(
+                                tag: products.image,
+                                child: AspectRatio(
+                                  aspectRatio: 1 / 1,
+                                  child: Image(
+                                    image: AssetImage(products.image),
+                                  ),
+                                ),
+                              ),
+                              Text(products.productName),
+                              Text(
+                                "${products.price}\$",
+                                style: TextStyle(
+                                    fontSize: 17,
+                                    color: Colors.amber,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ProductPage(
+                                    products: products,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ).toList(),
+              ),
+            ],
+          ),
         ),
       ),
     );
