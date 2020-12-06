@@ -4,6 +4,7 @@ import 'package:badges/badges.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 
 import 'package:ecomerce_design/BasketPage.dart';
+import 'package:ecomerce_design/Pages/SignUpPage.dart';
 import 'package:ecomerce_design/ProductPage.dart';
 import 'package:ecomerce_design/Store/MyStore.dart';
 
@@ -680,7 +681,13 @@ class _HomePageState extends State<HomePage> {
             },
           ),
           TabData(iconData: EvaIcons.starOutline, title: "WishList"),
-          TabData(iconData: Icons.people_alt_sharp, title: "Account"),
+          TabData(
+              iconData: Icons.people_alt_sharp,
+              title: "Account",
+              onclick: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SignUpPage()));
+              }),
         ],
         onTabChangedListener: (position) {
           // setState(() {

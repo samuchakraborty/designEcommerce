@@ -1,5 +1,6 @@
 import 'package:badges/badges.dart';
 import 'package:ecomerce_design/HomePage.dart';
+import 'package:ecomerce_design/Pages/SignUpPage.dart';
 import 'package:ecomerce_design/Store/MyStore.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
@@ -147,7 +148,13 @@ class _BasketPageState extends State<BasketPage> {
               },
             ),
             TabData(iconData: EvaIcons.starOutline, title: "WishList"),
-            TabData(iconData: Icons.people_alt_sharp, title: "Account"),
+            TabData(
+                iconData: Icons.people_alt_sharp,
+                title: "Account",
+                onclick: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignUpPage()));
+                }),
           ],
           onTabChangedListener: (position) {
             // setState(() {
