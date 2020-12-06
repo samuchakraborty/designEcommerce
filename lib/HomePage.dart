@@ -4,6 +4,7 @@ import 'package:badges/badges.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 
 import 'package:ecomerce_design/BasketPage.dart';
+import 'package:ecomerce_design/Pages/SignInPage.dart';
 import 'package:ecomerce_design/Pages/SignUpPage.dart';
 import 'package:ecomerce_design/ProductPage.dart';
 import 'package:ecomerce_design/Store/MyStore.dart';
@@ -686,7 +687,7 @@ class _HomePageState extends State<HomePage> {
               title: "Account",
               onclick: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SignUpPage()));
+                    MaterialPageRoute(builder: (context) => SignInPage()));
               }),
         ],
         onTabChangedListener: (position) {
