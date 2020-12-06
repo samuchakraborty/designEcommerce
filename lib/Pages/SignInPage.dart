@@ -109,10 +109,10 @@ class _SignInPageState extends State<SignInPage> {
                       child: FlatButton(
                         child: Text("Forget Password?"),
                         onPressed: () {
-                          Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ForgetPasswordPage()));
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ForgetPasswordPage()));
                         },
                       ),
                     ),
@@ -126,7 +126,7 @@ class _SignInPageState extends State<SignInPage> {
                           FlatButton(
                             child: Text("Register Now"),
                             onPressed: () {
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => SignUpPage()));

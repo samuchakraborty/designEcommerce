@@ -108,20 +108,20 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                         Container(
                           alignment: Alignment.topRight,
-
                           margin: EdgeInsets.only(right: 29),
                           height: 40,
                           width: 80,
-                         
                           decoration: BoxDecoration(
-                             color: Colors.white,
-                             border: Border.all(color: Colors.black),
-                           borderRadius: BorderRadius.circular(12),
+                            color: Colors.white,
+                            border: Border.all(color: Colors.black),
+                            borderRadius: BorderRadius.circular(12),
                           ),
                           child: FlatButton(
-                            child: Text("Send", style: TextStyle(color: Colors.grey, fontSize: 16), ),
-
-                           
+                            child: Text(
+                              "Send",
+                              style:
+                                  TextStyle(color: Colors.grey, fontSize: 16),
+                            ),
                             onPressed: () {},
                           ),
                         )
@@ -154,18 +154,17 @@ class _SignUpPageState extends State<SignUpPage> {
                       // padding: EdgeInsets.all(2),
                       margin: EdgeInsets.only(left: 30, right: 30),
                       decoration: BoxDecoration(
-                      //  shape: BoxShape.rectangle,
+                        //  shape: BoxShape.rectangle,
                         borderRadius: BorderRadius.circular(12),
                         color: Colors.greenAccent,
                       ),
 
                       child: FlatButton(
-                        child: Text("Sign Up", style: TextStyle(color: Colors.white),),
-                        onPressed: () {
-
-
-                          
-                        },
+                        child: Text(
+                          "Sign Up",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        onPressed: () {},
                       ),
                     ),
                     SizedBox(height: 4),
@@ -178,8 +177,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       // padding: EdgeInsets.all(2),
                       margin: EdgeInsets.only(left: 30, right: 30),
                       decoration: BoxDecoration(
-                       
-                       borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(12),
                         shape: BoxShape.rectangle,
                         color: Colors.redAccent,
                       ),
@@ -204,8 +202,10 @@ class _SignUpPageState extends State<SignUpPage> {
                         FlatButton(
                           child: Text("Sign In"),
                           onPressed: () {
-                             Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignInPage()));
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignInPage()));
                           },
                         ),
                       ],
