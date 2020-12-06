@@ -1,3 +1,6 @@
+import 'package:ecomerce_design/Pages/ForgetPassword.dart';
+import 'package:ecomerce_design/Pages/SignUpPage.dart';
+
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 
@@ -38,7 +41,6 @@ class _SignInPageState extends State<SignInPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-
                     SizedBox(height: 28),
                     Container(
                       alignment: Alignment.topLeft,
@@ -106,22 +108,33 @@ class _SignInPageState extends State<SignInPage> {
                       height: 20,
                       child: FlatButton(
                         child: Text("Forget Password?"),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ForgetPasswordPage()));
+                        },
                       ),
                     ),
                     SizedBox(height: 8),
                     Container(
-                        height: 20,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("Didn't have an account?"),
-                            FlatButton(
-                              child: Text("Register Now"),
-                              onPressed: () {},
-                            ),
-                          ],
-                        )),
+                      height: 20,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Didn't have an account?"),
+                          FlatButton(
+                            child: Text("Register Now"),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignUpPage()));
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
                     SizedBox(height: 4),
                     SizedBox(height: 24),
                     Container(
