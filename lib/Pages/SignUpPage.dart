@@ -1,3 +1,4 @@
+import 'package:ecomerce_design/Pages/SignInPage.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 
@@ -160,7 +161,11 @@ class _SignUpPageState extends State<SignUpPage> {
 
                       child: FlatButton(
                         child: Text("Sign Up", style: TextStyle(color: Colors.white),),
-                        onPressed: () {},
+                        onPressed: () {
+
+
+                          
+                        },
                       ),
                     ),
                     SizedBox(height: 4),
@@ -198,7 +203,10 @@ class _SignUpPageState extends State<SignUpPage> {
                         Text("Already have an account?"),
                         FlatButton(
                           child: Text("Sign In"),
-                          onPressed: () {},
+                          onPressed: () {
+                             Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignInPage()));
+                          },
                         ),
                       ],
                     )),
